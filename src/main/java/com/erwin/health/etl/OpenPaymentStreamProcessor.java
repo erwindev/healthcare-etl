@@ -1,5 +1,6 @@
 package com.erwin.health.etl;
 
+import com.erwin.health.util.ApplicationSettings;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -38,6 +39,8 @@ public class OpenPaymentStreamProcessor {
         JavaStreamingContext jssc = new JavaStreamingContext(conf,
                 Durations.seconds(5));
 
+        jssc.sparkContext().hadoopConfiguration().set("dfs.client.use.datanode.hostname", "true");
+
         // Start reading messages from Kafka and get DStream
         final JavaInputDStream<ConsumerRecord<String, String>> stream =
                 KafkaUtils.createDirectStream(jssc,
@@ -68,10 +71,11 @@ public class OpenPaymentStreamProcessor {
                     session.createDataFrame(openPaymentDataRecordRDD, OpenPaymentDataRecord.class);
             openPaymentDataset.show();
             if (!openPaymentDataset.rdd().isEmpty()) {
+                String fileLocation = ApplicationSettings.getInstance().getProperty("app.parquet_file_location");
                 openPaymentDataset
                         .write()
                         .mode(SaveMode.Append)
-                        .parquet("file:///Users/ealberto/temp/spark");
+                        .parquet(fileLocation);
             }
         });
         try {
