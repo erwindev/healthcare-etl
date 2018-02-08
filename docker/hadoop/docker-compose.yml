@@ -1,0 +1,19 @@
+version: "3"
+services:
+  hadoop:
+    image: ealberto/hadoop:2.9.0
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: hadoop.2.9.0
+    hostname: hadoop.erwin.com
+    ports:
+      - "50010:50010"
+      - "8088:8088"
+      - "9000:9000"
+      - "50070:50070"
+      - "50075:50075"
+      - "50030:50030"
+      - "50060:50060"
+      - "10000:10000"
+

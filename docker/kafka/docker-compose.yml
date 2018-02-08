@@ -1,0 +1,13 @@
+version: "3"
+services:
+  kafka:
+    image: ealberto/kafka:2.12
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: kafka.2.12
+    hostname: kafka.erwin.com
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+

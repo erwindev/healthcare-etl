@@ -88,13 +88,17 @@ public class OpenPaymentStreamProcessor {
 
     private Map<String, Object> getKafkaParam() {
         Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        String kafkaHost = ApplicationSettings.getInstance().getProperty("app.kafka_host");
+        String kafkaPort = ApplicationSettings.getInstance().getProperty("app.kafka_port");
+        String kafkaGroupId = ApplicationSettings.getInstance().getProperty("app.kafka_group_id");
+        String kafkaAutoOffsetReset = ApplicationSettings.getInstance().getProperty("app.kafka_auto_offset_reset");
+        kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHost+":"+kafkaPort);
         kafkaParams.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class.getName());
         kafkaParams.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class.getName());
-        kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG, "group1");
-        kafkaParams.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);
+        kafkaParams.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaAutoOffsetReset);
         kafkaParams.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
         return kafkaParams;
     }
