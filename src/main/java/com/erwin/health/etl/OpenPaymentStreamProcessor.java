@@ -1,6 +1,7 @@
 package com.erwin.health.etl;
 
 import com.erwin.health.util.ApplicationSettings;
+import com.google.gson.Gson;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -37,7 +38,7 @@ public class OpenPaymentStreamProcessor {
     public void process(SparkConf conf) {
         //Read messages in batch of 5 seconds
         JavaStreamingContext jssc = new JavaStreamingContext(conf,
-                Durations.seconds(5));
+                Durations.seconds(10));
 
         jssc.sparkContext().hadoopConfiguration().set("dfs.client.use.datanode.hostname", "true");
 
@@ -52,20 +53,22 @@ public class OpenPaymentStreamProcessor {
                                    opePaymentConsumerRecordRDD) -> {
             JavaRDD<OpenPaymentDataRecord> openPaymentDataRecordRDD =
                     opePaymentConsumerRecordRDD.map((openPaymentConsumerRecord) -> {
-                        OpenPaymentDataRecord openPaymenDatatRecord = new OpenPaymentDataRecord();
+                        OpenPaymentDataRecord openPaymenDataRecord = new OpenPaymentDataRecord();
                         String openPaymentRecord = openPaymentConsumerRecord.value();
+                        System.out.println(openPaymentRecord);
                         if (!openPaymentRecord.isEmpty()) {
-                            String data[] = openPaymentRecord.split("\\s*,\\s*");
-                            openPaymenDatatRecord.setProviderId(data[0]);
-                            openPaymenDatatRecord.setProviderName(data[1]);
-                            openPaymenDatatRecord.setPayerId(data[2]);
-                            openPaymenDatatRecord.setPayerName(data[3]);
-                            openPaymenDatatRecord.setPayerAmount(data[4]);
+                            openPaymenDataRecord = new Gson().fromJson(openPaymentRecord, OpenPaymentDataRecord.class);
+//                            System.out.println(openPaymenDataRecord.getPayerName());
+//                            System.out.println(openPaymenDataRecord.getProviderId());
+//                            System.out.println(openPaymenDataRecord.getProviderName());
+//                            System.out.println(openPaymenDataRecord.getPaymentAmount());
+//                            System.out.println(openPaymenDataRecord.getPayerId());
+
                         } else {
                             System.out.println("Invalid record");
                         }
-                        return openPaymenDatatRecord;
-                    }).filter(record -> record.getPayerAmount() != null);
+                        return openPaymenDataRecord;
+                    }).filter(record -> record.getPaymentAmount() != null);
             SparkSession session = SparkSession.builder().config(conf).getOrCreate();
             Dataset<Row> openPaymentDataset =
                     session.createDataFrame(openPaymentDataRecordRDD, OpenPaymentDataRecord.class);

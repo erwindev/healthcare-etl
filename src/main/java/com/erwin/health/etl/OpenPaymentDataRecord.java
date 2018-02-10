@@ -8,7 +8,7 @@ public class OpenPaymentDataRecord implements Serializable {
     private String providerName;
     private String payerId;
     private String payerName;
-    private String payerAmount;
+    private String paymentAmount;
 
     public String getProviderId() {
         return providerId;
@@ -34,10 +34,10 @@ public class OpenPaymentDataRecord implements Serializable {
     public void setPayerName(String payerName) {
         this.payerName = payerName;
     }
-    public String getPayerAmount() {
-        return payerAmount;
+    public String getPaymentAmount() {
+        return paymentAmount;
     }
-    public void setPayerAmount(String payerAmount) {
-        this.payerAmount = payerAmount;
+    public void setPaymentAmount(String paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 }

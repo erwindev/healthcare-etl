@@ -1,3 +1,8 @@
+##########################
+#
+# NOT FOR PRODUCTION USE
+#
+##########################
 FROM ubuntu:16.04
 
 MAINTAINER Erwin Alberto <erwin@erwindev.com>
