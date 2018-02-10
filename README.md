@@ -44,6 +44,7 @@ $ gradle build runMain
 If you don't have an application that can post messages to Kafka, you can run the Kafka producer that comes with the Kafka install.
 ```
 $ $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list kafka.erwin.com:9092 --topic openpayments
+> 10000,Dr. Shaw,99999,Walgreens,400.00
 ``` 
 
 Download and run the [Presto CLI](https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.194/presto-cli-0.194-executable.jar)
