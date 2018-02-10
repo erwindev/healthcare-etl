@@ -69,8 +69,8 @@ public class OpenPaymentStreamProcessor {
             SparkSession session = SparkSession.builder().config(conf).getOrCreate();
             Dataset<Row> openPaymentDataset =
                     session.createDataFrame(openPaymentDataRecordRDD, OpenPaymentDataRecord.class);
-            openPaymentDataset.show();
             if (!openPaymentDataset.rdd().isEmpty()) {
+                openPaymentDataset.show();
                 String fileLocation = ApplicationSettings.getInstance().getProperty("app.parquet_file_location");
                 openPaymentDataset
                         .write()

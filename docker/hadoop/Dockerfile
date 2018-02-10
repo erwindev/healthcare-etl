@@ -17,7 +17,8 @@ RUN \
   ssh \
   rsync \
   vim \
-  openjdk-8-jdk
+  openjdk-8-jdk \
+  iputils-ping
 
 
 # Install Hadoop, set JAVA_HOME in hadoop-env.sh, update path
@@ -25,6 +26,7 @@ RUN \
   wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz && \
   tar -xzf hadoop-2.9.0.tar.gz && \
   mv hadoop-2.9.0 $HADOOP_HOME && \
+  rm hadoop-2.9.0.tar.gz && \
   echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
   echo "PATH=$PATH:$HADOOP_HOME/bin" >> ~/.bashrc
 
@@ -67,7 +69,7 @@ ADD configs/ssh_config /root/.ssh/config
 ADD start-hadoop.sh start-hadoop.sh
 
 # expose various ports
-EXPOSE 8088 9000 50070 50075 50030 50060 50010 10000
+EXPOSE 8088 9000 9083 50070 50075 50030 50060 50010 10000
 
 # start hadoop
 CMD bash start-hadoop.sh

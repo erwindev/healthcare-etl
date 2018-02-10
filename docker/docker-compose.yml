@@ -1,0 +1,38 @@
+version: "3"
+services:
+  hadoop:
+    image: ealberto/hadoop:2.9.0
+    build:
+      context: "./hadoop"
+      dockerfile: Dockerfile
+    hostname: hadoop.erwin.com
+    ports:
+      - "50010:50010"
+      - "8088:8088"
+      - "9000:9000"
+      - "9083:9083"
+      - "50070:50070"
+      - "50075:50075"
+      - "50030:50030"
+      - "50060:50060"
+      - "10000:10000"
+  kafka:
+    image: ealberto/kafka:2.12
+    build:
+      context: "./kafka"
+      dockerfile: Dockerfile
+    hostname: kafka.erwin.com
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+  presto:
+    image: ealberto/presto:0.193
+    build:
+      context: "./presto"
+      dockerfile: Dockerfile
+    hostname: presto.erwin.com
+    ports:
+      - "8080:8080"
+
+
+

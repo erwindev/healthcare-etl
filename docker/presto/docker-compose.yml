@@ -1,0 +1,11 @@
+version: "3"
+services:
+  presto:
+    image: ealberto/presto:0.193
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    container_name: presto.0.193
+    hostname: presto.erwin.com
+    ports:
+      - "8080:8080"

@@ -27,6 +27,8 @@ $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
 # run the schema tools
 $HIVE_HOME/bin/schematool -dbType derby -initSchema
 $HIVE_HOME/bin/hive -f /opt/hive/conf/hive_init.sql
+$HIVE_HOME/bin/hive --service metastore
+
 
 # keep container running
 tail -f /dev/null
