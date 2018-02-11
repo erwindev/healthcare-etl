@@ -75,17 +75,17 @@ $ java -jar build/libs/openpayment-producer-1.0.jar
 
 ## Read Open Payments Data from HDFS
 
-Read the Open Payments Record Parquet file in HDFS
+**Read the Open Payments Record Parquet file in HDFS**
 ```
 $ gradle build runParquetReader
 ```
 
-Read the Open Payments Record through Presto
+**Read the Open Payments Record through Presto**
 ```
 $ gradle build runPrestoDBReader
 ```
 
-Create a notebook using Presto as the default interpreter.  Run the following SQL query in Presto.
+**Create a notebook using Presto as the default interpreter.  Run the following SQL query in Presto.**
 ```
 %presto 
 
