@@ -9,7 +9,6 @@ This is a sample project that demonstrates a realtime data pipeline using Hadoop
 **Clone the project**
 ```
 $ git clone https://github.com/erwindev/healthcare-etl.git
-$ cd docker
 ``` 
 
 **Build Hadoop, Kafka, Presto, Zeppelin**
