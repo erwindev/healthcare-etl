@@ -26,7 +26,7 @@ $ docker-compose build zeppelin
 localhost   hadoop.erwin.com kafka.erwin.com presto.erwin.com zeppelin.erwin.com
 ```
 
-##Run Hadoop, Kafka, Presto and Zeppelin
+## Run Hadoop, Kafka, Presto and Zeppelin
 ```
 $ docker-compose up -d
 ```
@@ -49,7 +49,7 @@ $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
    * default.user = presto
    * artifact = com.facebook.presto:presto-jdbc:jar:0.170
 
-##Run the Healthcare ETL application
+## Run the Healthcare ETL application
 
 **Run Apache Spark Streaming application**
 ```
@@ -73,7 +73,7 @@ $ gradle build
 $ java -jar build/libs/openpayment-producer-1.0.jar
 ``` 
 
-##Read Open Payments Data from HDFS
+## Read Open Payments Data from HDFS
 
 Read the Open Payments Record Parquet file in HDFS
 ```
