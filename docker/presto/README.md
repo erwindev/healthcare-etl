@@ -1,10 +1,8 @@
 # Presto Docker Setup
 
-Create the Virtual Machine
-```
-$ docker-machine create presto
-$ eval $(docker-machine env presto)
-```
+Install Docker
+* [MacOSX](https://docs.docker.com/docker-for-mac/install/)
+* [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 Update hosts file
 ```
@@ -27,3 +25,5 @@ $ mv presto-cli-0.194-executable.jar presto
 $ chmod +x presto
 $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
 ```
+
+To access Presto UI, click [here](http://presto.erwin.com:8080/)

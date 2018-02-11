@@ -31,6 +31,8 @@ RUN wget https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.193/
   mkdir $PRESTO_HOME/etc/catalog && \
   wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.193/presto-cli-0.193-executable.jar
 
+EXPOSE 8081
+
 ADD configs/node.properties $PRESTO_HOME/etc
 ADD configs/jvm.config $PRESTO_HOME/etc
 ADD configs/log.properties $PRESTO_HOME/etc

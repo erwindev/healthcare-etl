@@ -57,3 +57,4 @@ presto:default> select * from open_payment_record
    
 To access Presto UI, click [here](http://presto.erwin.com:8080/)
 To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)
+To access Zeppelin UI, click [here](http://zeppelin.erwin.com:8082/)

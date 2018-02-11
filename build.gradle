@@ -16,6 +16,7 @@ dependencies {
     compile group: 'org.apache.spark', name: 'spark-streaming-kafka-0-10_2.11', version: '2.2.0'
     compile group: 'org.scala-lang', name: 'scala-xml', version: '2.11.0-M4'
     compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+    compile group: 'com.facebook.presto', name: 'presto-jdbc', version: '0.194'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

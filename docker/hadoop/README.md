@@ -1,10 +1,8 @@
 # Hadoop Docker Setup
 
-Create the Virtual Machine
-```
-$ docker-machine create hadoop
-$ eval $(docker-machine env hadoop)
-```
+Install Docker
+* [MacOSX](https://docs.docker.com/docker-for-mac/install/)
+* [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 Update hosts file
 ```
@@ -20,3 +18,5 @@ Run Hadoop
 ```
 $ docker-compose up
 ```
+
+To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)

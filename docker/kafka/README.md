@@ -1,10 +1,8 @@
 # Kafka Docker Setup
 
-Create the Virtual Machine
-```
-$ docker-machine create kafka
-$ eval $(docker-machine env kafka)
-```
+Install Docker
+* [MacOSX](https://docs.docker.com/docker-for-mac/install/)
+* [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 Update hosts file
 ```

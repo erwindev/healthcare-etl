@@ -32,7 +32,16 @@ services:
       dockerfile: Dockerfile
     hostname: presto.erwin.com
     ports:
-      - "8080:8080"
+      - "8081:8081"
+#  zeppelin:
+#    image: ealberto/zeppelin:0.73
+#    build:
+#      context: "./zeppelin"
+#      dockerfile: Dockerfile
+#    container_name: zeppelin.0.73
+#    hostname: zeppelin.erwin.com
+#    ports:
+#      - "8082:8082"
 
 
 
