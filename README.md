@@ -12,8 +12,6 @@ $ git clone https://github.com/erwindev/healthcare-etl.git
 $ cd docker
 ``` 
 
-In order to run the application, we need to
-
 Build Hadoop, Kafka, Presto, Zeppelin
 ```
 $ cd docker
@@ -28,7 +26,7 @@ Update hosts file
 localhost   hadoop.erwin.com kafka.erwin.com presto.erwin.com zeppelin.erwin.com
 ```
 
-Run Hadoop, Kafka, Presto and Zeppelin
+##Run Hadoop, Kafka, Presto and Zeppelin
 ```
 $ docker-compose up -d
 ```
@@ -53,14 +51,14 @@ Configure Zeppelin
 
 ## Run the Healthcare ETL application
 
-Run Apache Spark Streaming application
+####Run Apache Spark Streaming application
 ```
 $ git clone https://github.com/erwindev/healthcare-etl
 $ cd healthcare-etl
 $ gradle build runMain
 ```
 
-Send Open Payments Data to Kafka
+####Send Open Payments Data to Kafka
 
 If you don't have an application that can post messages to Kafka, you can run the Kafka producer that comes with the Kafka install.  You will need to install Kafka locally in your machine.
 ```
@@ -75,6 +73,7 @@ $ gradle build
 $ java -jar build/libs/openpayment-producer-1.0.jar
 ``` 
 
+####Read Open Payments Data from HDFS
 Read the Open Payments Record Parquet file in HDFS
 ```
 $ gradle build runParquetReader
