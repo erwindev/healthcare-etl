@@ -11,7 +11,7 @@ This is a sample project that demonstrates a realtime data pipeline using Hadoop
 $ git clone https://github.com/erwindev/healthcare-etl.git
 ``` 
 
-**Build Hadoop, Kafka, Presto, Zeppelin**
+**Build Hadoop, Kafka, Presto and Zeppelin**
 ```
 $ cd docker
 $ docker-compose build hadoop
@@ -30,6 +30,7 @@ localhost   hadoop.erwin.com kafka.erwin.com presto.erwin.com zeppelin.erwin.com
 $ docker-compose up -d
 ```
 To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)
+
 To access Presto UI, click [here](http://presto.erwin.com:8080/) 
 
 **Download and run the [Presto CLI](https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.194/presto-cli-0.194-executable.jar)**
@@ -65,7 +66,7 @@ $ $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list kafka.erwin.com:9092 -
 >{"providerId":"132655","providerName":"GREGG D ALZATE","paymentAmount":90.87,"payerId":"100000000326","payerName":"DFINE, Inc"}
 ```
 
-Another way to send Open Payments data to Kafka is to run the Open Payment Producer application.  There is sample data that comes with the repo.  If you need a larger dataset, you will need to download data from [CMS.gov](https://www.cms.gov/OpenPayments/Explore-the-Data/Dataset-Downloads.html). 
+Another way to send Open Payments data to Kafka is to run the Open Payment Producer application.  There is sample data that comes with the repo.  If you need a larger dataset, you will need to download data from [CMS.gov](http://download.cms.gov/openpayments/PGYR16_P011718.ZIP). 
 ```
 $ git clone https://github.com/erwindev/openpayment-producer.git
 $ gradle build
