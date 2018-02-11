@@ -2,17 +2,17 @@
 This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers fpr Medicare and Medicaid Services.
 
 ## Setup the Healthcare ETL Application
-Install Docker
+**Install Docker**
 * [MacOSX](https://docs.docker.com/docker-for-mac/install/)
 * [Windows](https://docs.docker.com/docker-for-windows/install/)
 
-Clone the project
+**Clone the project**
 ```
 $ git clone https://github.com/erwindev/healthcare-etl.git
 $ cd docker
 ``` 
 
-Build Hadoop, Kafka, Presto, Zeppelin
+**Build Hadoop, Kafka, Presto, Zeppelin**
 ```
 $ cd docker
 $ docker-compose build hadoop
@@ -21,7 +21,7 @@ $ docker-compose build presto
 $ docker-compose build zeppelin
 ```
 
-Update hosts file
+**Update hosts file**
 ```
 localhost   hadoop.erwin.com kafka.erwin.com presto.erwin.com zeppelin.erwin.com
 ```
@@ -33,14 +33,14 @@ $ docker-compose up -d
 To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)
 To access Presto UI, click [here](http://presto.erwin.com:8080/) 
 
-Download and run the [Presto CLI](https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.194/presto-cli-0.194-executable.jar)
+**Download and run the [Presto CLI](https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.194/presto-cli-0.194-executable.jar)**
 ```
 $ mv presto-cli-0.194-executable.jar presto
 $ chmod +x presto
 $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
 ```
 
-Configure Zeppelin
+**Configure Zeppelin**
 * Go to Zeppelin UI by clicking [here](http://zeppelin.erwin.com:8082/)
 * Add Presto Interpreter
 * Use the following settings for the Presto Interpreter
@@ -49,16 +49,16 @@ Configure Zeppelin
    * default.user = presto
    * artifact = com.facebook.presto:presto-jdbc:jar:0.170
 
-## Run the Healthcare ETL application
+##Run the Healthcare ETL application
 
-####Run Apache Spark Streaming application
+**Run Apache Spark Streaming application**
 ```
 $ git clone https://github.com/erwindev/healthcare-etl
 $ cd healthcare-etl
 $ gradle build runMain
 ```
 
-####Send Open Payments Data to Kafka
+**Send Open Payments Data to Kafka**
 
 If you don't have an application that can post messages to Kafka, you can run the Kafka producer that comes with the Kafka install.  You will need to install Kafka locally in your machine.
 ```
