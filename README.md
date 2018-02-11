@@ -73,7 +73,7 @@ $ gradle build
 $ java -jar build/libs/openpayment-producer-1.0.jar
 ``` 
 
-####Read Open Payments Data from HDFS
+##Read Open Payments Data from HDFS
 Read the Open Payments Record Parquet file in HDFS
 ```
 $ gradle build runParquetReader
