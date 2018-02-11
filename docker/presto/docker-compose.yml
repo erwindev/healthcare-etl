@@ -1,11 +1,11 @@
 version: "3"
 services:
   presto:
-    image: ealberto/presto:0.193
+    image: ealberto/presto:0.170
     build:
       context: ""
       dockerfile: Dockerfile
-    container_name: presto.0.193
+    container_name: presto.0.170
     hostname: presto.erwin.com
     ports:
       - "8081:8081"

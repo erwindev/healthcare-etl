@@ -8,6 +8,7 @@ FROM ubuntu:16.04
 MAINTAINER Erwin Alberto <erwin@erwindev.com>
 
 ENV ZEPPELIN_HOME /opt/zeppelin
+ENV ZEPPELIN_VERSION 0.7.3
 
 # install java + others
 RUN apt-get update && apt-get install -y \
@@ -17,10 +18,10 @@ RUN apt-get update && apt-get install -y \
   iputils-ping
 
 # install kafka
-RUN wget http://mirrors.koehn.com/apache/zeppelin/zeppelin-0.7.3/zeppelin-0.7.3-bin-all.tgz && \
-  tar -xzf zeppelin-0.7.3-bin-all.tgz && \
-  mv zeppelin-0.7.3-bin-all $ZEPPELIN_HOME && \
-  rm zeppelin-0.7.3-bin-all.tgz
+RUN wget http://mirrors.koehn.com/apache/zeppelin/zeppelin-$ZEPPELIN_VERSION/zeppelin-$ZEPPELIN_VERSION-bin-all.tgz && \
+  tar -xzf zeppelin-$ZEPPELIN_VERSION-bin-all.tgz && \
+  mv zeppelin-$ZEPPELIN_VERSION-bin-all $ZEPPELIN_HOME && \
+  rm zeppelin-$ZEPPELIN_VERSION-bin-all.tgz
 
 EXPOSE 8082
 

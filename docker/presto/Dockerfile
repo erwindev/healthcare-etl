@@ -9,6 +9,7 @@ MAINTAINER Erwin Alberto <erwin@erwindev.com>
 
 ENV PRESTO_HOME /opt/presto
 ENV PRESTO_DATA_DIR /var/presto/data
+ENV PRESTO_VERSION 0.170
 
 # install java + others
 RUN apt-get update && apt-get install -y \
@@ -22,14 +23,14 @@ RUN apt-get update && apt-get install -y \
   telnet
 
 # install presto
-RUN wget https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.193/presto-server-0.193.tar.gz && \
-  tar -xzf presto-server-0.193.tar.gz && \
-  mv presto-server-0.193 $PRESTO_HOME && \
-  rm presto-server-0.193.tar.gz && \
+RUN wget https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz && \
+  tar -xzf presto-server-$PRESTO_VERSION.tar.gz && \
+  mv presto-server-$PRESTO_VERSION $PRESTO_HOME && \
+  rm presto-server-$PRESTO_VERSION.tar.gz && \
   mkdir -p $PRESTO_DATA_DIR && \
   mkdir $PRESTO_HOME/etc && \
   mkdir $PRESTO_HOME/etc/catalog && \
-  wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.193/presto-cli-0.193-executable.jar
+  wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/$PRESTO_VERSION/presto-cli-$PRESTO_VERSION-executable.jar
 
 EXPOSE 8081
 

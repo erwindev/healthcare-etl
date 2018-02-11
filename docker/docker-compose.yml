@@ -26,22 +26,21 @@ services:
       - "2181:2181"
       - "9092:9092"
   presto:
-    image: ealberto/presto:0.193
+    image: ealberto/presto:0.170
     build:
       context: "./presto"
       dockerfile: Dockerfile
     hostname: presto.erwin.com
     ports:
       - "8081:8081"
-#  zeppelin:
-#    image: ealberto/zeppelin:0.73
-#    build:
-#      context: "./zeppelin"
-#      dockerfile: Dockerfile
-#    container_name: zeppelin.0.73
-#    hostname: zeppelin.erwin.com
-#    ports:
-#      - "8082:8082"
+  zeppelin:
+    image: ealberto/zeppelin:0.73
+    build:
+      context: "./zeppelin"
+      dockerfile: Dockerfile
+    hostname: zeppelin.erwin.com
+    ports:
+      - "8082:8082"
 
 
 

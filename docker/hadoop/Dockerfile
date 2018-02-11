@@ -9,10 +9,12 @@ MAINTAINER Erwin Alberto <erwin@erwindev.com>
 
 # set environment vars
 ENV HADOOP_HOME /opt/hadoop
+ENV HADOOP_VERSION 2.9.0
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV HIVE_VERSION 2.3.2
 ENV HIVE_HOME /opt/hive
 ENV DERBY_HOME /opt/derby
+ENV DERBY_VERSION 10.14.1.0
 ENV PATH $HIVE_HOME/bin:$DERBY_HOME/bin:$PATH
 ENV CLASSPATH $DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
 
@@ -28,10 +30,10 @@ RUN \
 
 # Install Hadoop, set JAVA_HOME in hadoop-env.sh, update path
 RUN \
-  wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz && \
-  tar -xzf hadoop-2.9.0.tar.gz && \
-  mv hadoop-2.9.0 $HADOOP_HOME && \
-  rm hadoop-2.9.0.tar.gz && \
+  wget http://apache.mirrors.tds.net/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz && \
+  tar -xzf hadoop-$HADOOP_VERSION.tar.gz && \
+  mv hadoop-$HADOOP_VERSION $HADOOP_HOME && \
+  rm hadoop-$HADOOP_VERSION.tar.gz && \
   echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
   echo "PATH=$PATH:$HADOOP_HOME/bin" >> ~/.bashrc
 
@@ -44,11 +46,11 @@ RUN apt-get update && apt-get install -y wget procps && \
 	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
 	mv apache-hive-$HIVE_VERSION-bin $HIVE_HOME && \
 	rm apache-hive-$HIVE_VERSION-bin.tar.gz && \
-    wget http://www-us.apache.org/dist/db/derby/db-derby-10.14.1.0/db-derby-10.14.1.0-bin.tar.gz && \
-    tar xvzf db-derby-10.14.1.0-bin.tar.gz && \
-    mv db-derby-10.14.1.0-bin $DERBY_HOME && \
+    wget http://www-us.apache.org/dist/db/derby/db-derby-$DERBY_VERSION/db-derby-$DERBY_VERSION-bin.tar.gz && \
+    tar xvzf db-derby-$DERBY_VERSION-bin.tar.gz && \
+    mv db-derby-$DERBY_VERSION-bin $DERBY_HOME && \
     mkdir $DERBY_HOME/data && \
-	rm db-derby-10.14.1.0-bin.tar.gz && \
+	rm db-derby-$DERBY_VERSION-bin.tar.gz && \
 	apt-get --purge remove -y wget && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*

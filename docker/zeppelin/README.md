@@ -25,3 +25,4 @@ Setup Presto Interpreter
 * default.driver = com.facebook.presto.jdbc.PrestoDriver
 * default.url = jdbc:presto://presto.erwin.com:8081/hive/default
 * default.user = presto
+* artifact = com.facebook.presto:presto-jdbc:jar:0.170
