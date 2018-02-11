@@ -32,25 +32,24 @@ Run Hadoop, Kafka, Presto and Zeppelin
 ```
 $ docker-compose up -d
 ```
+To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)
+To access Presto UI, click [here](http://presto.erwin.com:8080/) 
 
 Download and run the [Presto CLI](https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.194/presto-cli-0.194-executable.jar)
 ```
 $ mv presto-cli-0.194-executable.jar presto
 $ chmod +x presto
 $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
-``` 
+```
 
 Configure Zeppelin
+* Go to Zeppelin UI by clicking [here](http://zeppelin.erwin.com:8082/)
 * Add Presto Interpreter
 * Use the following settings for the Presto Interpreter
    * default.driver = com.facebook.presto.jdbc.PrestoDriver
    * default.url = jdbc:presto://presto.erwin.com:8081/hive/default
    * default.user = presto
    * artifact = com.facebook.presto:presto-jdbc:jar:0.170
-
-To access Presto UI, click [here](http://presto.erwin.com:8080/)
-To access Hadoop UI, click [here](http://hadoop.erwin.com:50070/dfshealth.html#tab-overview)
-To access Zeppelin UI, click [here](http://zeppelin.erwin.com:8082/)
 
 ## Run the Healthcare ETL application
 
@@ -75,3 +74,26 @@ $ git clone https://github.com/erwindev/openpayment-producer.git
 $ gradle build
 $ java -jar build/libs/openpayment-producer-1.0.jar
 ``` 
+
+Read the Open Payments Record Parquet file in HDFS
+```
+$ gradle build runParquetReader
+```
+
+Read the Open Payments Record through Presto
+```
+$ gradle build runPrestoDBReader
+```
+
+Create a notebook using Presto as the default interpreter.  Run the following SQL query in Presto.
+```
+%presto 
+
+SELECT 
+providername, 
+sum(CAST(payeramount AS decimal(10,2))) totalpayment
+FROM open_payment_record 
+group BY providerid, providername
+order by totalpayment desc
+limit 10
+```

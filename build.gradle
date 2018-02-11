@@ -25,3 +25,13 @@ task(runMain, dependsOn: 'classes', type: JavaExec) {
     main = 'com.erwin.health.etl.OpenPaymentStreamProcessor'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task(runParquetReader, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.erwin.health.etl.ParquetFileReader'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runPrestoDBReader, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.erwin.health.etl.PrestoDBReader'
+    classpath = sourceSets.main.runtimeClasspath
+}
