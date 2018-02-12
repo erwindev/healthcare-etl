@@ -1,5 +1,5 @@
 # Realtime ETL Data Pipeline
-This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers fpr Medicare and Medicaid Services.
+This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers for Medicare and Medicaid Services.
 
 ## Architecture
 
