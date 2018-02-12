@@ -1,6 +1,10 @@
 # Realtime ETL Data Pipeline
 This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers fpr Medicare and Medicaid Services.
 
+## Architecture
+
+![Architecture](images/BigDataPipeline.png)
+
 ## Setup the Healthcare ETL Application
 **Install Docker**
 * [MacOSX](https://docs.docker.com/docker-for-mac/install/)
@@ -93,7 +97,7 @@ SELECT
 providername, 
 sum(CAST(payeramount AS decimal(10,2))) totalpayment
 FROM open_payment_record 
-group BY providerid, providername
+group BY providername
 order by totalpayment desc
 limit 10
 ```
