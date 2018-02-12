@@ -27,7 +27,7 @@ EXPOSE 8082
 
 ADD configs/zeppelin-site.xml $ZEPPELIN_HOME/conf/zeppelin-site.xml
 ADD configs/zeppelin-env.sh $ZEPPELIN_HOME/conf/zeppelin-env.sh
-# ADD configs/presto-jdbc-0.194.jar $ZEPPELIN_HOME/interpreter/jdbc/presto-jdbc-0.194.jar
+ADD configs/presto-jdbc-0.170.jar $ZEPPELIN_HOME/interpreter/jdbc/presto-jdbc-0.170.jar
 
 ADD start-zeppelin.sh start-zeppelin.sh
 
