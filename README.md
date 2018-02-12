@@ -1,5 +1,9 @@
 # Realtime ETL Data Pipeline
-This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers fpr Medicare and Medicaid Services.
+This is a sample project that demonstrates a realtime data pipeline using Hadoop, Kafka and Presto.  For this project we wil be using the Open Payments Data from Centers for Medicare and Medicaid Services.
+
+## Architecture
+
+![Architecture](images/BigDataPipeline.png)
 
 ## Setup the Healthcare ETL Application
 **Install Docker**
@@ -45,7 +49,7 @@ $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
 * Add Presto Interpreter
 * Use the following settings for the Presto Interpreter
    * default.driver = com.facebook.presto.jdbc.PrestoDriver
-   * default.url = jdbc:presto://presto.erwin.com:8081/hive/default
+   * default.url = jdbc:presto://presto:8081/hive/default
    * default.user = presto
    * artifact = com.facebook.presto:presto-jdbc:jar:0.170
 
@@ -93,7 +97,7 @@ SELECT
 providername, 
 sum(CAST(payeramount AS decimal(10,2))) totalpayment
 FROM open_payment_record 
-group BY providerid, providername
+group BY providername
 order by totalpayment desc
 limit 10
 ```
