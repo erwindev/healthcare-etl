@@ -53,17 +53,13 @@ public class OpenPaymentStreamProcessor {
                                    opePaymentConsumerRecordRDD) -> {
             JavaRDD<OpenPaymentDataRecord> openPaymentDataRecordRDD =
                     opePaymentConsumerRecordRDD.map((openPaymentConsumerRecord) -> {
+                        //***********************************************
+                        //THIS IS WHERE YOU START PROCESSING EACH RECORD
+                        //***********************************************
                         OpenPaymentDataRecord openPaymenDataRecord = new OpenPaymentDataRecord();
                         String openPaymentRecord = openPaymentConsumerRecord.value();
-                        System.out.println(openPaymentRecord);
                         if (!openPaymentRecord.isEmpty()) {
                             openPaymenDataRecord = new Gson().fromJson(openPaymentRecord, OpenPaymentDataRecord.class);
-//                            System.out.println(openPaymenDataRecord.getPayerName());
-//                            System.out.println(openPaymenDataRecord.getProviderId());
-//                            System.out.println(openPaymenDataRecord.getProviderName());
-//                            System.out.println(openPaymenDataRecord.getPaymentAmount());
-//                            System.out.println(openPaymenDataRecord.getPayerId());
-
                         } else {
                             System.out.println("Invalid record");
                         }
