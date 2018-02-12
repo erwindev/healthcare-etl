@@ -49,7 +49,7 @@ $ ./presto --server presto.erwin.com:8080 --catalog hive --schema default
 * Add Presto Interpreter
 * Use the following settings for the Presto Interpreter
    * default.driver = com.facebook.presto.jdbc.PrestoDriver
-   * default.url = jdbc:presto://presto.erwin.com:8081/hive/default
+   * default.url = jdbc:presto://presto:8081/hive/default
    * default.user = presto
    * artifact = com.facebook.presto:presto-jdbc:jar:0.170
 
